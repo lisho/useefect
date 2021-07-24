@@ -31,10 +31,10 @@ function FetchCard() {
   )
 
   const actualizaPosts = useCallback(
-    (userId) => {
-      getPosts(userId).then((newPosts) => setPosts(newPosts));
+    () => {
+      getPosts(user.id).then((newPosts) => setPosts(newPosts));
     },
-    [],
+    [user],
   )
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function FetchCard() {
   }, [actualizaUsuario]);
 
   useEffect(() => {
-    user && actualizaPosts(user?.id);
+    user && actualizaPosts();
   }, [user, actualizaPosts])
 
   return ( 
